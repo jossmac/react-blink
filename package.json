@@ -37,6 +37,7 @@
     "watch": "gulp watch:lib"
   },
   "readmeFilename": "README.md",
+  "license": "MIT",
   "keywords": [
     "blink",
     "react",
