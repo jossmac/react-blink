@@ -1,35 +1,38 @@
-var React = require('react/addons');
+var blacklist = require('blacklist');
+var React = require('react');
 
 /*
  * Fuck yeah, blink tag!
  */
 
 var Blink = React.createClass({
-	displayName: 'Blink',
-	
-	getInitialState: function() {
-		return { visible: true }
+	propTypes: {
+		children: React.PropTypes.element.isRequired,
+		duration: React.PropTypes.number
 	},
-	getDefaultProps: function() {
-		return { duration: 530 }
+	getInitialState () {
+		return { visible: true };
 	},
-	blink: function() {
+	getDefaultProps () {
+		return { duration: 530 };
+	},
+	blink () {
 		this.setState({ visible: !this.state.visible });
 	},
-	componentDidMount: function() {
-	    this.interval = setInterval(this.blink, this.props.duration);
+	componentDidMount () {
+		this.interval = setInterval(this.blink, this.props.duration);
 	},
-	componentWillUnmount: function() {
+	componentWillUnmount () {
 		clearInterval(this.interval);
 	},
-	
-	render: function() {
-		var style = { visibility: this.state.visible ? 'visible' : 'hidden' };
-
+	render () {
+		var { children } = this.props;
+		var props = blacklist(this.props, 'children', 'duration');
+		props.style = { visibility: this.state.visible ? 'visible' : 'hidden' };
 		return (
-			<span {...this.props} style={style}>{this.props.children}</span>
+			<span {...props}>{children}</span>
 		);
 	}
 });
 
-module.exports = Blink;
+export default Blink;
