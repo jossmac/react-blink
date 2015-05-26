@@ -1,6 +1,6 @@
 {
   "name": "react-blink",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Blink",
   "main": "dist/react-blink.min.js",
   "homepage": "https://github.com/jossmac/react-blink",
