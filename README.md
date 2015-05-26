@@ -1,6 +1,6 @@
 # React Blink
 
-For too long we've gone without the `<blink>` element. Well that's all about to change; blink is back baby!
+For too long we've gone without the `<blink>` element. Well that's all about to change; blink is back!
 
 Demo: http://jossmac.github.io/react-blink
 
