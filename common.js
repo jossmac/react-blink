@@ -21857,53 +21857,25 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"./emptyFunction":130,"_process":1}],"classnames":[function(require,module,exports){
-/*!
-  Copyright (c) 2015 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
+},{"./emptyFunction":130,"_process":1}],"blacklist":[function(require,module,exports){
+module.exports = function blacklist (src) {
+  var copy = {}, filter = arguments[1]
 
-function classNames () {
-	'use strict';
+  if (typeof filter === 'string') {
+    filter = {}
+    for (var i = 1; i < arguments.length; i++) {
+      filter[arguments[i]] = true
+    }
+  }
 
-	var classes = '';
+  for (var key in src) {
+    // blacklist?
+    if (filter[key]) continue
 
-	for (var i = 0; i < arguments.length; i++) {
-		var arg = arguments[i];
-		if (!arg) continue;
+    copy[key] = src[key]
+  }
 
-		var argType = typeof arg;
-
-		if ('string' === argType || 'number' === argType) {
-			classes += ' ' + arg;
-
-		} else if (Array.isArray(arg)) {
-			classes += ' ' + classNames.apply(null, arg);
-
-		} else if ('object' === argType) {
-			for (var key in arg) {
-				if (arg.hasOwnProperty(key) && arg[key]) {
-					classes += ' ' + key;
-				}
-			}
-		}
-	}
-
-	return classes.substr(1);
-}
-
-// safely export classNames for node / browserify
-if (typeof module !== 'undefined' && module.exports) {
-	module.exports = classNames;
-}
-
-/* global define */
-// safely export classNames for RequireJS
-if (typeof define !== 'undefined' && define.amd) {
-	define('classnames', [], function() {
-		return classNames;
-	});
+  return copy
 }
 
 },{}],"react/addons":[function(require,module,exports){
