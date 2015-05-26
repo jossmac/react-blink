@@ -7,24 +7,18 @@ var React = require('react/addons');
 
 /*
  * Fuck yeah, blink tag!
-*/
+ */
 
 var Blink = React.createClass({
 	displayName: 'Blink',
 
 	getInitialState: function getInitialState() {
-		return {
-			visible: true,
-			duration: 530
-		};
+		return { visible: true };
 	},
 	getDefaultProps: function getDefaultProps() {
-		return {
-			duration: 530
-		};
+		return { duration: 530 };
 	},
 	blink: function blink() {
-		console.log(!this.state.visible);
 		this.setState({ visible: !this.state.visible });
 	},
 	componentDidMount: function componentDidMount() {
@@ -35,7 +29,6 @@ var Blink = React.createClass({
 	},
 
 	render: function render() {
-
 		var style = { visibility: this.state.visible ? 'visible' : 'hidden' };
 
 		return React.createElement(
