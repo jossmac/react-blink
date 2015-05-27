@@ -1,7 +1,7 @@
 {
   "name": "react-blink",
   "version": "1.0.1",
-  "description": "Blink",
+  "description": "A react.js replacement for the <blink> tag.",
   "main": "src/Blink.js",
   "author": "Joss Mackison",
   "homepage": "https://github.com/jossmac/react-blink",
