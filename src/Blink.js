@@ -17,20 +17,18 @@ var Blink = React.createClass({
 		return { duration: 530 };
 	},
 	blink () {
+		if (!this.isMounted()) return;
 		this.setState({ visible: !this.state.visible });
+		setTimeout(this.blink, this.props.duration);
 	},
 	componentDidMount () {
-		this.interval = setInterval(this.blink, this.props.duration);
-	},
-	componentWillUnmount () {
-		clearInterval(this.interval);
+		this.blink();
 	},
 	render () {
-		var { children } = this.props;
 		var props = blacklist(this.props, 'children', 'duration');
 		props.style = { visibility: this.state.visible ? 'visible' : 'hidden' };
 		return (
-			<span {...props}>{children}</span>
+			<span {...props}>{this.props.children}</span>
 		);
 	}
 });
