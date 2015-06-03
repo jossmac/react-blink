@@ -7,7 +7,7 @@ var React = require('react');
 
 var Blink = React.createClass({
 	propTypes: {
-		children: React.PropTypes.element.isRequired,
+		children: React.PropTypes.node.isRequired,
 		duration: React.PropTypes.number
 	},
 	getInitialState () {
