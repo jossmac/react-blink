@@ -18,7 +18,11 @@ var Blink = React.createClass({
 	},
 	blink () {
 		if (!this.isMounted()) return;
-		this.setState({ visible: !this.state.visible });
+		this.setState(prevState => {
+			return {
+				visible: !prevState.visible
+			};
+		});
 		setTimeout(this.blink, this.props.duration);
 	},
 	componentDidMount () {
